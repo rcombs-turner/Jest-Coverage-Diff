@@ -2036,15 +2036,19 @@ function run() {
             const branchNameBase = 'reporting-test';
             const branchNameHead = '5066-expose-test-coverage';
             child_process_1.execSync(commandToRun);
-            const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('./app/coverage/coverage-final.json').toString()));
+	    code.debug('#########################################rob-does-this-work###########################################');
+            const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('app/coverage/coverage-final.json').toString()));
             child_process_1.execSync('/usr/bin/git fetch');
             child_process_1.execSync('/usr/bin/git stash');
             child_process_1.execSync(`/usr/bin/git checkout --progress --force ${branchNameBase}`);
             child_process_1.execSync(commandToRun);
-            const codeCoverageOld = (JSON.parse(fs_1.default.readFileSync('./app/coverage/coverage-final.json').toString()));
+            const codeCoverageOld = (JSON.parse(fs_1.default.readFileSync('app/coverage/coverage-final.json').toString()));
             const currentDirectory = child_process_1.execSync('pwd')
                 .toString()
                 .trim();
+	    code.debug('#########################################ok###########################################');
+	    code.debug(currentDirectory);
+
             const diffChecker = new DiffChecker_1.DiffChecker(codeCoverageNew, codeCoverageOld);
             let messageToPost = `Code coverage diff between base branch:${branchNameBase} and head branch: ${branchNameHead} \n`;
             const coverageDetails = diffChecker.getCoverageDetails(!fullCoverage, `${currentDirectory}/`);
