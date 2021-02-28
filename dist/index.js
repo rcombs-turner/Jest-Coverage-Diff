@@ -2036,12 +2036,12 @@ function run() {
             const branchNameBase = 'reporting-test';
             const branchNameHead = '5066-expose-test-coverage';
             child_process_1.execSync(commandToRun);
-            const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('coverage-summary.json').toString()));
+            const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('./app/coverage/coverage-final.json').toString()));
             child_process_1.execSync('/usr/bin/git fetch');
             child_process_1.execSync('/usr/bin/git stash');
             child_process_1.execSync(`/usr/bin/git checkout --progress --force ${branchNameBase}`);
             child_process_1.execSync(commandToRun);
-            const codeCoverageOld = (JSON.parse(fs_1.default.readFileSync('coverage-summary.json').toString()));
+            const codeCoverageOld = (JSON.parse(fs_1.default.readFileSync('./app/coverage/coverage-final.json').toString()));
             const currentDirectory = child_process_1.execSync('pwd')
                 .toString()
                 .trim();
