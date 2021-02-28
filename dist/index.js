@@ -2032,7 +2032,7 @@ function run() {
             const commandToRun = core.getInput('runCommand');
             const delta = Number(core.getInput('delta'));
             const githubClient = github.getOctokit(githubToken);
-            const prNumber = github.context.issue.number;
+            const prNumber = '5070';
             const branchNameBase = 'reporting-test';
             const branchNameHead = '5066-expose-test-coverage';
             child_process_1.execSync(commandToRun);
