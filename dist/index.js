@@ -2042,12 +2042,19 @@ function run() {
             child_process_1.execSync('/usr/bin/git fetch');
             child_process_1.execSync('/usr/bin/git stash');
             child_process_1.execSync(`/usr/bin/git checkout --progress --force ${branchNameBase}`);
+	    console.warn('#########################################rob10ok###########################################');
+
             child_process_1.execSync(commandToRun);
+	    console.warn('#########################################rob11ok###########################################');
+
             const codeCoverageOld = (JSON.parse(fs_1.default.readFileSync('./app/code-coverage-artifacts/coverage-final.json').toString()));
+	    console.warn('#########################################rob12ok###########################################');
+
             const currentDirectory = child_process_1.execSync('pwd')
                 .toString()
                 .trim();
-	    console.warn('#########################################rob2ok###########################################');
+	    console.warn('#########################################rob13ok###########################################');
+
 	    console.warn(currentDirectory);
 
             const diffChecker = new DiffChecker_1.DiffChecker(codeCoverageNew, codeCoverageOld);
