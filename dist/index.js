@@ -2033,8 +2033,8 @@ function run() {
             const delta = Number(core.getInput('delta'));
             const githubClient = github.getOctokit(githubToken);
             const prNumber = github.context.issue.number;
-            const branchNameBase = (_a = github.context.payload.pull_request) === null || _a === void 0 ? void 0 : _a.base.ref;
-            const branchNameHead = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head.ref;
+            const branchNameBase = 'master';
+            const branchNameHead = '5066-expose-test-coverage';
             child_process_1.execSync(commandToRun);
             const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('coverage-summary.json').toString()));
             child_process_1.execSync('/usr/bin/git fetch');
