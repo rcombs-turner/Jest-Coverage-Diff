@@ -2036,7 +2036,7 @@ function run() {
             const branchNameBase = 'reporting-test';
             const branchNameHead = '5066-expose-test-coverage';
             child_process_1.execSync(commandToRun);
-	    core.debug('#########################################rob-does-this-work###########################################');
+	    console.warn('#########################################rob-does-this-work###########################################');
             const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('./app/code-coverage-artifacts/coverage-final.json').toString()));
             child_process_1.execSync('/usr/bin/git fetch');
             child_process_1.execSync('/usr/bin/git stash');
@@ -2046,8 +2046,8 @@ function run() {
             const currentDirectory = child_process_1.execSync('pwd')
                 .toString()
                 .trim();
-	    core.debug('#########################################ok###########################################');
-	    core.debug(currentDirectory);
+	    console.warn('#########################################ok###########################################');
+	    console.warn(currentDirectory);
 
             const diffChecker = new DiffChecker_1.DiffChecker(codeCoverageNew, codeCoverageOld);
             let messageToPost = `Code coverage diff between base branch:${branchNameBase} and head branch: ${branchNameHead} \n`;
