@@ -2038,6 +2038,7 @@ function run() {
             child_process_1.execSync(commandToRun);
 	    console.warn('#########################################rob-does-this-work###########################################');
             const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('./app/code-coverage-artifacts/coverage-final.json').toString()));
+            console.warn(codeCoverageNew);
             child_process_1.execSync('/usr/bin/git fetch');
             child_process_1.execSync('/usr/bin/git stash');
             child_process_1.execSync(`/usr/bin/git checkout --progress --force ${branchNameBase}`);
@@ -2046,12 +2047,17 @@ function run() {
             const currentDirectory = child_process_1.execSync('pwd')
                 .toString()
                 .trim();
-	    console.warn('#########################################ok###########################################');
+	    console.warn('#########################################rob2ok###########################################');
 	    console.warn(currentDirectory);
 
             const diffChecker = new DiffChecker_1.DiffChecker(codeCoverageNew, codeCoverageOld);
+	    console.warn('#########################################rob3ok###########################################');
+
             let messageToPost = `Code coverage diff between base branch:${branchNameBase} and head branch: ${branchNameHead} \n`;
             const coverageDetails = diffChecker.getCoverageDetails(!fullCoverage, `${currentDirectory}/`);
+	    console.warn('#########################################rob4ok###########################################');
+	    console.warn(coverageDetails);
+
             if (coverageDetails.length === 0) {
                 messageToPost =
                     'No changes to code coverage between the base branch and the head branch';
@@ -2061,6 +2067,8 @@ function run() {
                     'File | % Stmts | % Branch | % Funcs | % Lines \n -----|---------|----------|---------|------ \n';
                 messageToPost += coverageDetails.join('\n');
             }
+	    console.warn('#########################################rob5post###########################################');
+
             yield githubClient.issues.createComment({
                 repo: repoName,
                 owner: repoOwner,
