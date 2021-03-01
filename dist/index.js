@@ -2037,7 +2037,7 @@ function run() {
             const branchNameHead = '5066-expose-test-coverage';
             child_process_1.execSync(commandToRun);
 	    console.warn('#########################################rob-does-this-work###########################################');
-            const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('./app/code-coverage-artifacts/coverage-final.json').toString()));
+            const codeCoverageNew = (JSON.parse(fs_1.default.readFileSync('./app/coverage/coverage-summary.json').toString()));
             console.warn(codeCoverageNew);
             child_process_1.execSync('/usr/bin/git fetch');
             child_process_1.execSync('/usr/bin/git stash');
@@ -2047,7 +2047,7 @@ function run() {
             child_process_1.execSync(commandToRun);
 	    console.warn('#########################################rob11ok###########################################');
 
-            const codeCoverageOld = (JSON.parse(fs_1.default.readFileSync('./app/code-coverage-artifacts/coverage-final.json').toString()));
+            const codeCoverageOld = (JSON.parse(fs_1.default.readFileSync('./app/coverage/coverage-summary.json').toString()));
 	    console.warn('#########################################rob12ok###########################################');
 
             const currentDirectory = child_process_1.execSync('pwd')
